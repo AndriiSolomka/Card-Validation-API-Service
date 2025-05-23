@@ -1,0 +1,43 @@
+volumes:
+  redis-data:
+  app-logs:
+
+networks:
+  dev-network:
+    driver: bridge
+
+services:
+  redis:
+    container_name: redis
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis-data:/data
+    command: ["redis-server", "--save", "60", "1", "--appendonly", "yes"]
+    networks:
+      - dev-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  node-server:
+    container_name: node-server
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env.dev
+    ports:
+      - 3000:3000
+    depends_on:
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./src:/home/node/app/src
+      - app-logs:/home/node/app/logs
+    networks:
+      - dev-network

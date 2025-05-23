@@ -1,0 +1,68 @@
+volumes:
+  redis-data-test:
+  logs-data-test:
+
+networks:
+  test-network:
+    driver: bridge
+
+services:
+  redis-test:
+    image: redis:7-alpine
+    restart: always
+    ports:
+      - 6380:6379
+    volumes:
+      - redis-data-test:/data
+    networks:
+      - test-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  test-unit:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    env_file:
+      - .env.test
+    depends_on:
+      redis-test:
+        condition: service_healthy
+    volumes:
+      - logs-data-test:/home/node/app/logs
+    command: npm run test:unit
+    networks:
+      - test-network
+
+  test-integration:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    env_file:
+      - .env.test
+    depends_on:
+      redis-test:
+        condition: service_healthy
+    volumes:
+      - logs-data-test:/home/node/app/logs
+    command: npm run test:integration
+    networks:
+      - test-network
+
+  test-e2e:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    env_file:
+      - .env.test
+    depends_on:
+      redis-test:
+        condition: service_healthy
+    volumes:
+      - logs-data-test:/home/node/app/logs
+    command: npm run test:e2e
+    networks:
+      - test-network
