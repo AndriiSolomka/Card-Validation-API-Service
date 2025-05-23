@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm install
+      - name: Run ESLint
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create .env.test file
+        run: |
+          echo "${{ secrets.ENV_TEST_CONTENTS }}" > .env.test
+
+      - name: Build and run unit tests
+        run: docker compose -f docker-compose.test.yml up --build --abort-on-container-exit test-unit
+
+      - name: Build and run e2e tests
+        run: docker compose -f docker-compose.test.yml up --build --abort-on-container-exit test-e2e
+
+      - name: Cleanup
+        run: docker compose -f docker-compose.test.yml down -v
