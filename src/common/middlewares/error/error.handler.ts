@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ErrorMiddleware } from "../../../constants/types/middleware/middleware.type";
 import {
   HTTP_STATUS,
@@ -6,6 +5,7 @@ import {
 } from "../../../constants/enums/http/http.enum";
 import { CustomValidationError } from "../../errors/validation.error";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const errorHandler: ErrorMiddleware = (err, req, res, next) => {
   if (err instanceof CustomValidationError) {
     return res.status(HTTP_STATUS.BAD_REQUEST).json({

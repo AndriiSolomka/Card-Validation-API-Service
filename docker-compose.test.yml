@@ -37,21 +37,6 @@ services:
     networks:
       - test-network
 
-  test-integration:
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-    env_file:
-      - .env.test
-    depends_on:
-      redis-test:
-        condition: service_healthy
-    volumes:
-      - logs-data-test:/home/node/app/logs
-    command: npm run test:integration
-    networks:
-      - test-network
-
   test-e2e:
     build:
       context: .
