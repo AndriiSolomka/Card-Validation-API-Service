@@ -34,11 +34,11 @@ cd Card-Validation-API-Service.git
 
 ### 2. Environment Variables
 
-Copy `.env.example` to `.env` and `.env.test.example` to `.env.test`:
+Copy `.env.example.dev` to `.env.dev` and `.env.example.test` to `.env.test`:
 
 ```bash
-cp .env.example .env
-cp .env.test.example .env.test
+cp .env.example.dev .env.dev
+cp .env.example.test .env.test
 ```
 
 ---
