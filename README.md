@@ -185,7 +185,6 @@ This service supports detection of a wide range of payment card brands:
 | Maestro                          | `Maestro`                   |
 | Maestro UK                       | `Maestro UK`                |
 | Dankort                          | `Dankort`                   |
-| Mir                              | `Mir`                       |
 | BORICA                           | `BORICA`                    |
 | Troy                             | `Troy`                      |
 | UATP                             | `UATP`                      |

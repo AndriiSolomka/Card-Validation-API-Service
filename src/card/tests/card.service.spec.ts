@@ -189,7 +189,6 @@ describe("CardService", () => {
       { number: "5018000000000000", type: "Maestro" },
       { number: "6759000000000000", type: "Maestro UK" },
       { number: "5019000000000000", type: "Dankort" },
-      { number: "2200000000000000", type: "Mir" },
       { number: "2205000000000000", type: "BORICA" },
       { number: "9792000000000000", type: "Troy" },
       { number: "1000000000000000", type: "UATP" },

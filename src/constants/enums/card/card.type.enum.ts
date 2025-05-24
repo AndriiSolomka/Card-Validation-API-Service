@@ -14,7 +14,6 @@ export enum CARD_TYPE {
   MAESTRO = "Maestro",
   MAESTRO_UK = "Maestro UK",
   DANKORT = "Dankort",
-  MIR = "Mir",
   BORICA = "BORICA",
   TROY = "Troy",
   UATP = "UATP",
