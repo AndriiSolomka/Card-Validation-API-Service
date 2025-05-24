@@ -70,7 +70,8 @@ describe("CardController (E2E)", () => {
         expect.arrayContaining([
           {
             field: "card_number",
-            message: "card_number is required and must be a string",
+            message:
+              "card_number is required and must be a string containing only digits",
           },
         ]),
       );
