@@ -9,7 +9,7 @@ A robust, production-ready RESTful API for validating payment card data.
 
 - **REST API** for payment card validation
 - **Card number & expiration date validation** (Luhn algorithm, date checks)
-- **Wide card type support** — see [Supported Card Types](#-supported-card-types)
+- **Wide card type support** — see [Supported Card Types](#supported-card-types)
 - **Detailed error messages** for invalid input
 - **Comprehensive logging** (Pino, file & pretty console)
 - **Caching** of validation results in Redis for performance
@@ -164,7 +164,7 @@ npm run dev
 - **Secrets:** Test envs via GitHub Secrets
 
 ---
-## 🏷️ Supported Card Types
+## Supported Card Types
 
 This service supports detection of a wide range of payment card brands:
 
