@@ -27,7 +27,7 @@ A robust, production-ready RESTful API for validating payment card data.
 
 ```bash
 git clone https://github.com/AndriiSolomka/Card-Validation-API-Service.git
-cd Card-Validation-API-Service.git
+cd Card-Validation-API-Service
 ```
 
 ---
