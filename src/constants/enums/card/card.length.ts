@@ -16,7 +16,6 @@ export const CARD_LENGTHS: { [key in CARD_TYPE]?: number[] } = {
   [CARD_TYPE.MAESTRO]: [12, 13, 14, 15, 16, 17, 18, 19],
   [CARD_TYPE.MAESTRO_UK]: [12, 13, 14, 15, 16, 17, 18, 19],
   [CARD_TYPE.DANKORT]: [16],
-  [CARD_TYPE.MIR]: [16, 17, 18, 19],
   [CARD_TYPE.BORICA]: [16],
   [CARD_TYPE.TROY]: [16],
   [CARD_TYPE.UATP]: [15],

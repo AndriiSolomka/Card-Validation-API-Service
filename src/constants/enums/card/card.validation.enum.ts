@@ -1,6 +1,6 @@
 export enum CARD_NUMBER_DTO_ERROR {
   FIELD = "card_number",
-  MESSAGE = "card_number is required and must be a string",
+  MESSAGE = "card_number is required and must be a string containing only digits",
 }
 
 export enum EXPIRATION_MONTH_DTO_ERROR {
