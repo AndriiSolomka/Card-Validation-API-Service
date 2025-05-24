@@ -25,5 +25,5 @@ export function validateCardDto(body: Partial<CardDto>): ValidationError[] {
 }
 
 const isInvalidString = (value: string | undefined): boolean => {
-  return typeof value !== "string" || !value.trim();
+  return typeof value !== "string" || !/^\d+$/.test(value ?? "");
 };
