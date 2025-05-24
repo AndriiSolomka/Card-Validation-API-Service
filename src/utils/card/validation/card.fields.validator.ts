@@ -9,7 +9,7 @@ import {
   EXPIRATION_DATE,
   EXPIRATION_MONTH,
   EXPIRATION_YEAR,
-} from "../../../constants/enums/card/validation.card.enum";
+} from "../../../constants/enums/card/card.validation.enum";
 import { createError } from "../errors/validation-error.factory";
 import { ValidationError } from "../../../constants/interfaces/card/card.interface";
 

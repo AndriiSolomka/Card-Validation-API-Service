@@ -170,12 +170,46 @@ describe("CardService", () => {
   });
 
   describe("getType", () => {
-    it("calls getCardType", () => {
-      (cardType.getCardType as jest.Mock).mockReturnValueOnce("MasterCard");
-      // @ts-expect-error: testing private method
-      const res = cardService.getType("5555555555554444");
-      expect(cardType.getCardType).toHaveBeenCalledWith("5555555555554444");
-      expect(res).toBe("MasterCard");
+    const testCases: Array<{ number: string; type: string }> = [
+      { number: "4111111111111111", type: "Visa" },
+      { number: "4026000000000000", type: "Visa Electron" },
+      { number: "5555555555554444", type: "MasterCard" },
+      { number: "371449635398431", type: "American Express" },
+      { number: "6011111111111117", type: "Discover" },
+      { number: "30569309025904", type: "Diners Club" },
+      {
+        number: "5500000000000004",
+        type: "Diners Club United States & Canada",
+      },
+      { number: "3530111333300000", type: "JCB" },
+      { number: "6221260000000000", type: "China UnionPay" },
+      { number: "3100000000000000", type: "China T-Union" },
+      { number: "6360000000000000", type: "InterPayment" },
+      { number: "6370000000000000", type: "InstaPayment" },
+      { number: "5018000000000000", type: "Maestro" },
+      { number: "6759000000000000", type: "Maestro UK" },
+      { number: "5019000000000000", type: "Dankort" },
+      { number: "2200000000000000", type: "Mir" },
+      { number: "2205000000000000", type: "BORICA" },
+      { number: "9792000000000000", type: "Troy" },
+      { number: "1000000000000000", type: "UATP" },
+      { number: "5060990000000000", type: "Verve" },
+      { number: "3571110000000000", type: "LankaPay" },
+      { number: "8600000000000000", type: "Uzcard" },
+      { number: "9860000000000000", type: "HUMO" },
+      { number: "1946000000000000", type: "GPN" },
+      { number: "6040010000000000", type: "UkrCart" },
+      { number: "0000000000000000", type: "Unknown" },
+    ];
+
+    testCases.forEach(({ number, type }) => {
+      it(`returns ${type} for card number ${number}`, () => {
+        (cardType.getCardType as jest.Mock).mockReturnValueOnce(type);
+        // @ts-expect-error: testing private method
+        const res = cardService.getType(number);
+        expect(cardType.getCardType).toHaveBeenCalledWith(number);
+        expect(res).toBe(type);
+      });
     });
   });
 });

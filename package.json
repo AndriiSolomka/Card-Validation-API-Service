@@ -21,6 +21,7 @@
     "express": "^5.1.0",
     "http-status-codes": "^2.3.0",
     "ioredis": "^5.6.1",
+    "lru-cache": "^11.1.0",
     "pino": "^9.7.0",
     "pino-pretty": "^13.0.0",
     "reflect-metadata": "^0.2.2",

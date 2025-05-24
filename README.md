@@ -9,7 +9,7 @@ A robust, production-ready RESTful API for validating payment card data.
 
 - **REST API** for payment card validation
 - **Card number & expiration date validation** (Luhn algorithm, date checks)
-- **Card type detection** (Visa, MasterCard, American Express, Discover, etc.)
+- **Wide card type support** — see [Supported Card Types](#supported-card-types)
 - **Detailed error messages** for invalid input
 - **Comprehensive logging** (Pino, file & pretty console)
 - **Caching** of validation results in Redis for performance
@@ -27,7 +27,7 @@ A robust, production-ready RESTful API for validating payment card data.
 
 ```bash
 git clone https://github.com/AndriiSolomka/Card-Validation-API-Service.git
-cd Card-Validation-API-Service.git
+cd Card-Validation-API-Service
 ```
 
 ---
@@ -164,6 +164,41 @@ npm run dev
 - **Secrets:** Test envs via GitHub Secrets
 
 ---
+## Supported Card Types
+
+This service supports detection of a wide range of payment card brands:
+
+| Card Type                        | Example Value                |
+|-----------------------------------|-----------------------------|
+| Visa                             | `Visa`                      |
+| Visa Electron                    | `Visa Electron`             |
+| MasterCard                       | `MasterCard`                |
+| American Express                 | `American Express`          |
+| Discover                         | `Discover`                  |
+| Diners Club                      | `Diners Club`               |
+| Diners Club United States & Canada| `Diners Club United States & Canada` |
+| JCB                              | `JCB`                       |
+| China UnionPay                   | `China UnionPay`            |
+| China T-Union                    | `China T-Union`             |
+| InterPayment                     | `InterPayment`              |
+| InstaPayment                     | `InstaPayment`              |
+| Maestro                          | `Maestro`                   |
+| Maestro UK                       | `Maestro UK`                |
+| Dankort                          | `Dankort`                   |
+| Mir                              | `Mir`                       |
+| BORICA                           | `BORICA`                    |
+| Troy                             | `Troy`                      |
+| UATP                             | `UATP`                      |
+| Verve                            | `Verve`                     |
+| LankaPay                         | `LankaPay`                  |
+| Uzcard                           | `Uzcard`                    |
+| HUMO                             | `HUMO`                      |
+| GPN                              | `GPN`                       |
+| UkrCart                          | `UkrCart`                   |
+
+---
+
+
 
 ## 👤 Author
 
