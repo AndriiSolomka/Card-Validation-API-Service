@@ -3,7 +3,7 @@ import {
   CARD_NUMBER_DTO_ERROR,
   EXPIRATION_MONTH_DTO_ERROR,
   EXPIRATION_YEAR_DTO_ERROR,
-} from "../../../constants/enums/card/validation.card.enum";
+} from "../../../constants/enums/card/card.validation.enum";
 import { ValidationError } from "../../../constants/interfaces/card/card.interface";
 import { createError } from "../errors/validation-error.factory";
 
@@ -25,5 +25,5 @@ export function validateCardDto(body: Partial<CardDto>): ValidationError[] {
 }
 
 const isInvalidString = (value: string | undefined): boolean => {
-  return typeof value !== "string" || !value.trim();
+  return typeof value !== "string" || !/^\d+$/.test(value ?? "");
 };
